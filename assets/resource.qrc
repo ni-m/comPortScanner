@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="comPortScanner">
+    <file>icons/outline_sync_black_24dp.png</file>
     <file>logo/logo.svg</file>
     <file>logo/logo.png</file>
   </qresource>
