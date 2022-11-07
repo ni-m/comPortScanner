@@ -31,6 +31,7 @@
 
 #include <QMainWindow>
 #include "dialogabout.h"
+#include <QSerialPortInfo>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,6 +47,7 @@ class MainWindow : public QMainWindow {
     ~MainWindow();
 
    private:
+    void clearOutput();
     Ui::MainWindow* ui;
     DialogAbout* dAbout;
 };

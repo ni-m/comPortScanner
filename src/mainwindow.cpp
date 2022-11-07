@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     dAbout = new DialogAbout;
 
+    clearOutput();
+
     // menu actions
     connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
@@ -45,4 +47,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::clearOutput() {
+    QLabel* lbl[] = {ui->outSerialNumber, ui->outDesc, ui->outManufacturer, ui->outSystemLocation,
+                     ui->outVendorId};
+
+    for (int i = 0; i < sizeof(lbl) / sizeof(lbl[0]); ++i) {
+        lbl[i]->setText("N/A");
+    }
+    ui->groupSingleConn->setTitle("N/A");
 }

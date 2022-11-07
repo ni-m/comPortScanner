@@ -14,8 +14,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Add custom app icon
 set(APPICON_WIN "${CMAKE_CURRENT_SOURCE_DIR}/assets/app/appIcon.rc")
 
-find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets Svg)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg)
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets Svg SerialPort)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Svg SerialPort)
 
 set(VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/include/version.h")
 include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
@@ -40,7 +40,11 @@ add_custom_target(VersionFile ALL
 )
 include(tools/cmake/version.cmake)
 
-target_link_libraries(comPortScanner PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg)
+target_link_libraries(comPortScanner PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::SerialPort
+)
 
 set_target_properties(comPortScanner PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER ni-m.ch
