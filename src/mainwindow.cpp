@@ -27,6 +27,7 @@
 
 
 #include "mainwindow.h"
+#include <QVariant>
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -34,12 +35,18 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     dAbout = new DialogAbout;
 
-    clearOutput();
+    clearOutput();     ///< Init empty detail view
+    updateTreeView();  ///< Init tree view with com ports
 
     // menu actions
     connect(ui->actionAboutQt, &QAction::triggered, qApp, &QApplication::aboutQt);
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
     connect(ui->actionAbout, &QAction::triggered, dAbout, &DialogAbout::show);
+
+    connect(ui->actionSync, &QAction::triggered, this, &MainWindow::updateTreeView);
+
+    connect(ui->treeConnections, QTreeWidget::currentItemChanged, this,
+            &MainWindow::updateDetailView);
 
     // disable wait for close, automatic close after main window close
     dAbout->setAttribute(Qt::WA_QuitOnClose, false);
@@ -57,4 +64,40 @@ void MainWindow::clearOutput() {
         lbl[i]->setText("N/A");
     }
     ui->groupSingleConn->setTitle("N/A");
+}
+
+/**
+ * @brief Update tree view acc to the available serial ports
+ *
+ */
+void MainWindow::updateTreeView() {
+    ui->treeConnections->clear();
+    listOfPorts.clear();
+    listOfPorts = QSerialPortInfo::availablePorts();
+    qDebug() << listOfPorts.size();
+
+    for (int i = 0; i < listOfPorts.size(); ++i) {
+        QTreeWidgetItem* treeItem = new QTreeWidgetItem(ui->treeConnections);
+        treeItem->setText(0, listOfPorts[i].portName());
+        treeItem->setText(1, listOfPorts[i].serialNumber());
+        treeItem->setText(2, listOfPorts[i].description());
+        treeItem->setData(0, Qt::UserRole, QVariant(i));  ///< store index of given connection
+    }
+}
+
+void MainWindow::updateDetailView(QTreeWidgetItem* current) {
+    if (current != nullptr) {
+        /// retrieve port info at given index
+        QSerialPortInfo port = listOfPorts.value(current->data(0, Qt::UserRole).toInt());
+
+        /// set info in detail view @todo (ni-m) Add N/A if entry is empty
+        ui->groupSingleConn->setTitle(port.portName());
+        ui->outDesc->setText(port.description());
+        ui->outSerialNumber->setText(port.serialNumber());
+        ui->outSystemLocation->setText(port.systemLocation());
+        ui->outManufacturer->setText(port.manufacturer());
+        ui->outVendorId->setText("0x" +
+                                 QString("%1").arg(port.vendorIdentifier(), 4, 16).toUpper());
+        ///< @todo (ni-m) Add padding 0
+    }
 }

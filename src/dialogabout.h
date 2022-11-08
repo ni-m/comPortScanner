@@ -41,7 +41,7 @@ class DialogAbout : public QDialog {
    public:
     /**
      * @brief DialogAbout
-     * @param parent
+     * @param parent Ptr to parent widget, used by Qt for parent/child connection
      */
     DialogAbout(QWidget* parent = nullptr);  // explicit
     ~DialogAbout();

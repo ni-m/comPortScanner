@@ -30,8 +30,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "dialogabout.h"
 #include <QSerialPortInfo>
+#include <QTreeWidget>
+#include "dialogabout.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -39,6 +40,12 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+/**
+ * @brief Main Window class
+ * 
+ * Holds all methods for the main window
+ * 
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
@@ -47,8 +54,27 @@ class MainWindow : public QMainWindow {
     ~MainWindow();
 
    private:
+    /**
+     * @brief Clear the detail view
+     *
+     */
     void clearOutput();
-    Ui::MainWindow* ui;
-    DialogAbout* dAbout;
+    /**
+     * @brief Update tree view
+     *
+     * Load each port into the tree view and save a reference to the
+     * QSerialPortInfo object
+     *
+     */
+    void updateTreeView();
+    /**
+     * @brief Update detail view on selection
+     *
+     * @param current Ptr to current selected item in treeConnection
+     */
+    void updateDetailView(QTreeWidgetItem* current);
+    Ui::MainWindow* ui; ///< Ptr to ui
+    DialogAbout* dAbout; ///< Ptr to instance of DialogAbout
+    QList<QSerialPortInfo> listOfPorts; ///< List of all available ports
 };
 #endif  // MAINWINDOW_H

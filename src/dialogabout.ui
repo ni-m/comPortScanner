@@ -107,7 +107,7 @@
      <item row="0" column="0" colspan="2">
       <widget class="QLabel" name="lblAbout">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;comPortScanner&lt;br/&gt;&lt;/span&gt;Marco Niederberger &lt;a href=&quot;https://github.com/ni-m&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@ni-m&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Scan all COM ports on your machine and display the related informations.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;License&lt;br/&gt;&lt;/span&gt;GPLv3, see &lt;a href=&quot;LICENSE.md&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;LICENSE.md&lt;/span&gt;&lt;/a&gt; for details&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Version info:&lt;/span&gt;&lt;br/&gt;#GitHash - #compDate - #compTime &lt;br/&gt;&lt;a href=&quot;#GitLink&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;#GitLink&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;comPortScanner&lt;br/&gt;&lt;/span&gt;Marco Niederberger&lt;br/&gt;&lt;a href=&quot;https://github.com/ni-m&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;@ni-m&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;, &lt;/span&gt;November 2022&lt;/p&gt;&lt;p&gt;Scan all COM ports on your machine and display the related informations.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;License&lt;br/&gt;&lt;/span&gt;GPLv3, see &lt;a href=&quot;LICENSE.md&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;LICENSE.md&lt;/span&gt;&lt;/a&gt; for details&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Version info:&lt;/span&gt;&lt;br/&gt;#GitHash - #compDate - #compTime &lt;br/&gt;&lt;a href=&quot;#GitLink&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;#GitLink&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
@@ -143,8 +143,6 @@
  </widget>
  <resources>
   <include location="../assets/resource.qrc"/>
-  <include location="../assets/resource.qrc"/>
-  <include location="../../assets/resource.qrc"/>
  </resources>
  <connections>
   <connection>
