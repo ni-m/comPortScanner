@@ -67,7 +67,7 @@
      id="layer1"
      transform="translate(2.6458333,2.6458333)">
     <rect
-       style="fill:#5e5e5e;fill-opacity:1;stroke:none;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#454545;fill-opacity:1;stroke:none;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round"
        id="rect1053"
        width="211.66667"
        height="58.208336"
@@ -83,7 +83,7 @@
          style="font-size:66.6667px;line-height:58.0156px;font-family:sans-serif;white-space:pre;shape-inside:url(#rect3043);fill:#ffffff"><tspan
            x="244.13867"
            y="74.227618"
-           id="tspan13068">comPortScanner</tspan></text>
+           id="tspan13017">comPortScanner</tspan></text>
       <text
          xml:space="preserve"
          transform="matrix(0.26458334,0,0,0.26458334,46.392628,77.187011)"
@@ -91,7 +91,7 @@
          style="font-size:33.3333px;line-height:29.0078px;font-family:sans-serif;white-space:pre;shape-inside:url(#rect3043-7);fill:#ffffff"><tspan
            x="244.13867"
            y="50.146021"
-           id="tspan13070">Scan all available COM ports</tspan></text>
+           id="tspan13019">Scan all available COM ports</tspan></text>
     </g>
     <rect
        style="fill:#0066cc;fill-opacity:1;stroke:#0066cc;stroke-width:7.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3;stroke-dasharray:none;stroke-opacity:1"
@@ -151,8 +151,8 @@
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:40px;line-height:34.8094px;font-family:'Gill Sans MT';-inkscape-font-specification:'Gill Sans MT Bold';white-space:pre;shape-inside:url(#rect2276);fill:#ffffff;stroke:#000004;stroke-width:1.50298;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"><tspan
          x="15.050781"
          y="143.21999"
-         id="tspan13074"><tspan
+         id="tspan13023"><tspan
            style="stroke-width:1.93937"
-           id="tspan13072">COM</tspan></tspan></text>
+           id="tspan13021">COM</tspan></tspan></text>
   </g>
 </svg>

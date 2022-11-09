@@ -1,2 +1,2 @@
 # comPortScanner
-Scan all your available COM ports on your device.
+![GitHashExtractor Banner image](./assets/logo/banner.svg)
