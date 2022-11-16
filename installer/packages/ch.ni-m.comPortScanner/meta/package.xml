@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>comPortScanner</DisplayName>
+    <Description>Scan available COM ports and display the informations</Description>
+    <Version>0.2.0</Version>
+    <ReleaseDate>2022-11-16</ReleaseDate>
+    <Name>ch.ni-m.comPortScanner</Name>
+    <Script>installscript.qs</Script>
+    <Default>false</Default>
+    <ForcedInstallation>true</ForcedInstallation>
+</Package>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>comPortScanner</Name>
+    <Version>0.1.0</Version>
+    <Title>comPortScanner</Title>
+    <Publisher>Marco Niederberger</Publisher>
+    <StartMenuDir>comPortScanner</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/comPortScanner</TargetDir>
+    <ProductUrl>ni-m.ch</ProductUrl>
+	<RemoteRepositories>
+        <Repository>
+            <Url>http://ni-m.ch/packages/comPortScanner</Url>
+        </Repository>
+    </RemoteRepositories>
+</Installer>
