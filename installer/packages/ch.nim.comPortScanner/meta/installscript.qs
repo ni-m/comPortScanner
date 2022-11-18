@@ -14,25 +14,20 @@ Component.prototype.createOperations = function()
                                "@TargetDir@/comPortScanner.exe", 
                                "@StartMenuDir@/comPortScanner.lnk", 
                                "workingDirectory=@TargetDir@/comPortScanner", 
-                               "iconPath=@TargetDir@/appIcon.ico");
-							   
-		// Start menu shortcut for readme
+                               "iconPath=@TargetDir@/comPortScanner.exe", "iconId=0");
+
+        // Add desktop shortcut
         component.addOperation("CreateShortcut", 
-                               "@TargetDir@/readme.md", 
-                               "@StartMenuDir@/readme.lnk", 
-                               "workingDirectory=@TargetDir@/comPortScanner");
-		
-		// Start menu shortcut for maintenance tool
+                            "@TargetDir@/comPortScanner.exe",// target
+                            "@DesktopDir@/comPortScanner.lnk",// link-path
+                            "workingDirectory=@TargetDir@",// working-dir
+                            "iconPath=@TargetDir@/comPortScanner.exe", "iconId=0",// icon
+                            "description=Start comPortScanner");// description
+
+        // Start menu shortcut for maintenance tool
         component.addOperation("CreateShortcut", 
                                "@TargetDir@/MaintenanceTool.exe", 
                                "@StartMenuDir@/comPortScanner-maintenance.ink", 
                                "workingDirectory=@TargetDir@/comPortScanner");
-
-       // Desktop Shortcut
-       component.addOperation("CreateShortcut", 
-                              "@TargetDir@/comPortScanner.exe",
-                              "@DesktopDir@comPortScanner.lnk",
-                              "workingDirectory=@TargetDir@/comPortScanner", 
-                              "iconPath=@TargetDir@/comPortScanner.ico");
     }
 }

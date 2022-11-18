@@ -4,7 +4,7 @@
     <Description>Scan available COM ports and display the informations</Description>
     <Version>0.2.0</Version>
     <ReleaseDate>2022-11-16</ReleaseDate>
-    <Name>ch.ni-m.comPortScanner</Name>
+    <Name>ch.nim.comPortScanner</Name>
     <Script>installscript.qs</Script>
     <Default>false</Default>
     <ForcedInstallation>true</ForcedInstallation>

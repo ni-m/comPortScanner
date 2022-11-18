@@ -4,7 +4,7 @@
     <Description>comPortScanner Software Installer</Description>
     <Version>1.0.0</Version>
     <ReleaseDate>2019-11-13</ReleaseDate>
-    <Name>ch.ni-m.comPortScanner.installer</Name>
+    <Name>ch.nim.installer</Name>
     <Virtual>true</Virtual>
-    <UpdateText>This changed compared to the last release</UpdateText>
+    <UpdateText>Initial release</UpdateText>
 </Package>
