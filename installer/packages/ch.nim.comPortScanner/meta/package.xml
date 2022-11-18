@@ -8,4 +8,7 @@
     <Script>installscript.qs</Script>
     <Default>false</Default>
     <ForcedInstallation>true</ForcedInstallation>
+    <Licenses>
+        <License name="The GNU General Public License v3.0" file="LICENSE.md" />
+    </Licenses>
 </Package>
