@@ -11,5 +11,8 @@
         <Repository>
             <Url>http://ni-m.ch/packages/comPortScanner</Url>
         </Repository>
+        <Repository>
+            <Url>https://software.ni-m.ch</Url>
+        </Repository>
     </RemoteRepositories>
 </Installer>

@@ -26,8 +26,8 @@ Component.prototype.createOperations = function()
 
         // Start menu shortcut for maintenance tool
         component.addOperation("CreateShortcut", 
-                               "@TargetDir@/MaintenanceTool.exe", 
-                               "@StartMenuDir@/comPortScanner-maintenance.ink", 
+                               "@TargetDir@/maintenancetool.exe", 
+                               "@StartMenuDir@/comPortScanner-maintenance.lnk", 
                                "workingDirectory=@TargetDir@/comPortScanner");
     }
 }
