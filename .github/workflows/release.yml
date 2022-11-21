@@ -28,7 +28,7 @@ jobs:
       run: mkdir build/out && cmake -B ./build/out
 
     - name: show folder
-      run: ls
+      run: ls && cd build && ls
     - name: Build
     # windeployqt is required to find all the libraries, don't find the C++
       run: cd build &&  mv ./release/comPortScanner.exe ./out && windeployqt --compiler-runtime --no-svg --no-opengl-sw --no-angle --no-system-d3d-compiler ./out/comPortScanner.exe
