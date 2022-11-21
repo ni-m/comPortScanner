@@ -22,7 +22,7 @@ jobs:
         arch: win64_msvc2019_64
         cache: true
         version: '6.3.*'
-        modules: 'qserialport'
+        modules: 'qtserialport'
 
     - name: CmakeBuild
       run: mkdir build/out && cmake -B ./build/out
