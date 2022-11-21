@@ -29,7 +29,7 @@ jobs:
       run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel
 
     - name: Build cmake
-      run: cmake --config MinSizeRel --target all --
+      run: cmake --config MinSizeRel --build ./build/out --target all --
 
     - name: show folder
       run: ls && cd build && ls && cd out && ls
