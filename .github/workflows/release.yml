@@ -1,5 +1,6 @@
 # https://github.com/Mte90/GBAATM-Rebirth/blob/master/.github/workflows/main.yml
 
+
 name: Release on Push
 on:
   push:
@@ -24,8 +25,11 @@ jobs:
         version: '6.3.*'
         modules: 'qtserialport'
 
-    - name: CmakeBuild
-      run: mkdir build/out && cmake -G Ninja -B ./build/out
+    - name: Configure cmake
+      run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel
+
+    - name: Build cmake
+      run: cmake --config MinSizeRel --target all
 
     - name: show folder
       run: ls && cd build && ls && cd out && ls
