@@ -19,7 +19,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           # This is required or cannot compile it
-          arch: win64_mingw
+          arch: 'win64_msvc2019_64'
           cache: true
           version: "6.3.*"
           host: 'windows'
