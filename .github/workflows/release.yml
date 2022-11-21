@@ -13,34 +13,37 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
+    # - name: Checkout repo
+    #   uses: actions/checkout@v2
 
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-    # This is required or cannot compile it
-        arch: win64_msvc2019_64
-        cache: true
-        version: '6.3.*'
-        modules: 'qtserialport'
+    # - name: Install Qt
+    #   uses: jurplel/install-qt-action@v3
+    #   with:
+    # # This is required or cannot compile it
+    #     arch: win64_msvc2019_64
+    #     cache: true
+    #     version: '6.3.*'
+    #     modules: 'qtserialport'
 
-    - name: Configure cmake
-      run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel
+    # - name: Configure cmake
+    #   run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel
 
-    - name: Build cmake
-      run: cmake --config MinSizeRel --build ./build/out
+    - name: Cmake help
+      run: cmake --help
 
-    - name: show folder
-      run: ls && cd build && ls && cd out && ls
-    - name: Build
-    # windeployqt is required to find all the libraries, don't find the C++
-      run: cd build &&  mv ./release/comPortScanner.exe ./out && windeployqt --compiler-runtime --no-svg --no-opengl-sw --no-angle --no-system-d3d-compiler ./out/comPortScanner.exe
-    - name: Package project 
-      # Path to the build is different in windows, also the command
-      run: Compress-Archive -Path "build/out/*" -DestinationPath windows.zip
+    # - name: Build cmake
+    #   run: cmake --config MinSizeRel --build ./build/out
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: windowsExe
-        path: ./windows.zip
+    # - name: show folder
+    #   run: ls && cd build && ls && cd out && ls
+    # - name: Build
+    # # windeployqt is required to find all the libraries, don't find the C++
+    #   run: cd build &&  mv ./release/comPortScanner.exe ./out && windeployqt --compiler-runtime --no-svg --no-opengl-sw --no-angle --no-system-d3d-compiler ./out/comPortScanner.exe
+    # - name: Package project 
+    #   # Path to the build is different in windows, also the command
+    #   run: Compress-Archive -Path "build/out/*" -DestinationPath windows.zip
+
+    # - uses: actions/upload-artifact@v3
+    #   with:
+    #     name: windowsExe
+    #     path: ./windows.zip
