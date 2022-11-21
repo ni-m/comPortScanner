@@ -25,7 +25,7 @@ jobs:
         modules: 'qtserialport'
 
     - name: CmakeBuild
-      run: mkdir build/out && cmake -B ./build/out
+      run: mkdir build/out && cmake -G Ninja -B ./build/out
 
     - name: show folder
       run: ls && cd build && ls && cd out && ls
