@@ -54,11 +54,7 @@ set_target_properties(comPortScanner PROPERTIES
 )
 
 qt_finalize_executable(comPortScanner)
-include(tools/cmake/windeployqt.cmake)
 
-if(WIN32)
-    windeployqt(comPortScanner)
-endif()
 
 # # Copy files into build directory
 add_custom_command(
