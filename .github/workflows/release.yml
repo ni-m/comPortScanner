@@ -25,9 +25,6 @@ jobs:
           host: 'windows'
           target: 'desktop'
           modules: "qtserialport"
-
-      - name: Check for QtIF
-        run: binarycreator
         
       - name: Configure cmake
         run: mkdir build/out && cmake -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
