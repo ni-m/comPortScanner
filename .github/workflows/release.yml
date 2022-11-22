@@ -26,20 +26,32 @@ jobs:
           target: 'desktop'
           modules: "qtserialport"
 
-      - name: Check for QtIF
-        run: binarycreator
-        
       - name: Configure cmake
-        run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
+        run: | 
+          mkdir build/out && \
+          cmake -G Ninja -B ./build/out \
+          -DCMAKE_BUILD_TYPE:STRING=MinSizeRel \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \
+          --no-warn-unused-cli
 
       - name: Build cmake
-        run: cmake --build ./build/out --config MinSizeRel --target all --
+        run: |
+          cmake --build ./build/out --config MinSizeRel --target all --
 
       - name: show folder
         run: ls && cd build && ls && cd out && ls
       - name: Windeplyqt
         # windeployqt is required to find all the libraries, don't find the C++
-        run: mkdir release && mv ./build/out/comPortScanner.exe ./release && windeployqt --compiler-runtime --no-svg --no-opengl-sw --no-system-d3d-compiler --no-translations ./release/comPortScanner.exe
+        run: |
+          mkdir release && \
+          mv ./build/out/comPortScanner.exe ./release && \
+          windeployqt \
+          --compiler-runtime \
+          --no-svg \
+          --no-opengl-sw \
+          --no-system-d3d-compiler \
+          --no-translations \
+          ./release/comPortScanner.exe
 
       - uses: actions/upload-artifact@v3
         with:
