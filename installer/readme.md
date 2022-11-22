@@ -28,8 +28,5 @@ comPortScanner
 ### Qt build
 https://github.com/Mte90/GBAATM-Rebirth/blob/master/.github/workflows/main.yml
 
-### Qt Installer Framework
-https://medium.com/@bgallois/qt-series-s01e02-qtinstallerframework-github-actions-19be86d4528d
-
 ### Error with hyphen in path
 https://stackoverflow.com/questions/58791830/qt-installer-framework-typeerror-cannot-read-property-name
