@@ -27,7 +27,7 @@ jobs:
           modules: "qtserialport"
         
       - name: Configure cmake
-        run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
+        run: mkdir build/out && cmake -G Visual Studio 16 2019 -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
 
       - name: Build cmake
         run: cmake --build ./build/out --config MinSizeRel --target all --
