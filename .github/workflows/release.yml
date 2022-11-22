@@ -19,7 +19,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           # This is required or cannot compile it
-          arch: 'win64_mingw'
+          arch: 'win64_msvc2019_64'
           cache: true
           version: "6.3.*"
           host: 'windows'
@@ -30,7 +30,7 @@ jobs:
         run: binarycreator
         
       - name: Configure cmake
-        run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
+        run: mkdir build/out && cmake -B ./build/out -DCMAKE_BUILD_TYPE:STRING=MinSizeRel -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
 
       - name: Build cmake
         run: cmake --build ./build/out --config MinSizeRel --target all --
