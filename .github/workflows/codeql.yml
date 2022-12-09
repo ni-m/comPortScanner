@@ -53,10 +53,22 @@ jobs:
         # queries: security-extended,security-and-quality
 
 
-    # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
-    # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+          version: '6.3.*'
+          target: 'desktop'
+          install-deps: 'true'
+          archives: 'qtbase qtconnectivity qtserialport'
+          cache: 'true'
+          cache-key-prefix: 'install-qt-action'
+          tools: ''
+        
+    - name: Configure cmake
+      run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
+
+    - name: Build cmake
+      run: cmake --build ./build/out --config Debug --target all --
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
