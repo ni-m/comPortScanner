@@ -65,7 +65,7 @@ jobs:
           tools: ''
         
     - name: Configure cmake
-      run: mkdir build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
+      run: mkdir ./build/out && cmake -G Ninja -B ./build/out -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --no-warn-unused-cli
 
     - name: Build cmake
       run: cmake --build ./build/out --config Debug --target all --
