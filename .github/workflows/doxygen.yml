@@ -23,7 +23,7 @@ on:
         default: 'no'
 
 jobs:
-  Build:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
