@@ -39,10 +39,12 @@ jobs:
           touch .nojekyll #disable page generator from GitHub
           mkdir -p ./build/doxygen
           doxygen
+          mkdir -p ./ghPages/doxygen
+          cp ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
 
       - name: Deploy to GitHub Pages
         # if: github.event_name == 'release' || github.event.inputs.publishDoc == 'yes' #test without release
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/doxygen # Source folder for gh-pages deploy
+          publish_dir: ./ghPages # Source folder for gh-pages deploy
