@@ -40,7 +40,7 @@ jobs:
           mkdir -p ./build/doxygen
           doxygen
           mkdir -p ./ghPages/doxygen
-          cp ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
+          cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
 
       - name: Deploy to GitHub Pages
         # if: github.event_name == 'release' || github.event.inputs.publishDoc == 'yes' #test without release
