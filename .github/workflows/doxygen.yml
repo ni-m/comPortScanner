@@ -39,7 +39,7 @@ jobs:
           touch .nojekyll #disable page generator from GitHub
           mkdir -p ./build/doxygen
           doxygen
-          cp -R ./build/doxygen ./ghPages # Copy build documentation to release folder
+          cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
 
       - name: Deploy to GitHub Pages
         # if: github.event_name == 'release' || github.event.inputs.publishDoc == 'yes' #test without release
