@@ -1,50 +1,50 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# @file documentation.yml
+# @authors Gschwind, Weber, Schoch, Niederberger
+# @copyright (c) 2022 LineGrip Corp Ltd.
+#
+# @brief This workflow builds our documentation every time we push to a 
+# feature branch and publishes the documentation to gh-page on release.
 
-on:
-  # Runs on pushes targeting the default branch
+name: Docs
+on: 
+  release:
+    types: [published]
+
   push:
-    # branches: ["main"]
+    #uncomment if we switch to GitFlow
+    #branches-ignore:
+    #- main
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    inputs:
+      publishDoc:
+        description: 'Publish to gh-pages [yes/no]'     
+        required: true
+        default: 'no'
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Install dependencies
-        run: |
-          sudo apt-get install doxygen
-          sudo apt-get install graphviz
+      - name: Install apt-get packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: doxygen graphviz
+          version: 1.0
+      
       - name: Run doxygen
         run: |
+          touch .nojekyll #disable page generator from GitHub
           mkdir -p ./build/doxygen
+          mkdir -p ./ghPages
           doxygen
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: './build/doxygen'
+          cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        if: github.ref == 'refs/heads/feature/buildDoxygen'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ghPages # Source folder for gh-pages deploy
