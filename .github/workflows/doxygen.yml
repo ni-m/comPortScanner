@@ -29,7 +29,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Install apt-get packages
-      - uses: awalsh128/cache-apt-pkgs-action@latest
+        uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: doxygen graphviz
           version: 1.0
