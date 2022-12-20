@@ -28,15 +28,15 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get install doxygen
-          sudo apt-get install graphviz
-          touch .nojekyll #disable page generator from GitHub
+      - name: Install apt-get packages
+      - uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: doxygen graphviz
+          version: 1.0
       
       - name: Run doxygen
         run: |
+          touch .nojekyll #disable page generator from GitHub
           mkdir -p ./build/doxygen
           doxygen
 
@@ -45,4 +45,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/book/_build # Source folder for gh-pages deploy
+          publish_dir: ./build/doxygen # Source folder for gh-pages deploy
