@@ -38,7 +38,7 @@ jobs:
         run: |
           touch .nojekyll #disable page generator from GitHub
           mkdir -p ./build/doxygen
-          mkdir -p ./ghPages/doxygen
+          mkdir -p ./ghPages
           doxygen
           cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
 
