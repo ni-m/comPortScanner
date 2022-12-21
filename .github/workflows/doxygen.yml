@@ -43,7 +43,7 @@ jobs:
           cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
 
       - name: Deploy to GitHub Pages
-        # if: github.event_name == 'release' || github.event.inputs.publishDoc == 'yes' #test without release
+        if: github.ref == 'refs/heads/feature/buildDoxygen'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
