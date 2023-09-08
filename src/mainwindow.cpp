@@ -91,12 +91,18 @@ void MainWindow::updateDetailView(QTreeWidgetItem* current) {
         /// set info in detail view @todo (ni-m) Add N/A if entry is empty
         ui->groupSingleConn->setTitle(port.portName());
         ui->outDesc->setText(port.description());
-        ui->outSerialNumber->setText(port.serialNumber());
+        if (port.serialNumber() != "") {
+            ui->outSerialNumber->setText(port.serialNumber());
+        } else {
+            ui->outSerialNumber->setText("N/A");
+        }
         ui->outSystemLocation->setText(port.systemLocation());
         ui->outManufacturer->setText(port.manufacturer());
         if (port.hasVendorIdentifier() != 0) {
             ui->outVendorId->setText("0x" +
                                      QString("%1").arg(port.vendorIdentifier(), 4, 16).toUpper());
+        } else {
+            ui->outVendorId->setText("N/A");
         }
         ///< @todo (ni-m) Add padding 0
     }
