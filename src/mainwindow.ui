@@ -31,6 +31,9 @@
       <property name="indentation">
        <number>3</number>
       </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
       <column>
        <property name="text">
         <string>Serial port</string>
@@ -46,50 +49,6 @@
         <string>Description</string>
        </property>
       </column>
-      <item>
-       <property name="text">
-        <string>COM101</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM102</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM4</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>COM5</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
      </widget>
     </item>
     <item>
@@ -108,7 +67,7 @@
        <item row="0" column="1">
         <widget class="QLabel" name="outSerialNumber">
          <property name="text">
-          <string>TextLabel</string>
+          <string>N/A</string>
          </property>
         </widget>
        </item>
@@ -122,7 +81,7 @@
        <item row="1" column="1">
         <widget class="QLabel" name="outDesc">
          <property name="text">
-          <string>TextLabel</string>
+          <string>N/A</string>
          </property>
         </widget>
        </item>
@@ -136,7 +95,7 @@
        <item row="2" column="1">
         <widget class="QLabel" name="outManufacturer">
          <property name="text">
-          <string>TextLabel</string>
+          <string>N/A</string>
          </property>
         </widget>
        </item>
@@ -150,7 +109,7 @@
        <item row="3" column="1">
         <widget class="QLabel" name="outSystemLocation">
          <property name="text">
-          <string>TextLabel</string>
+          <string>N/A</string>
          </property>
         </widget>
        </item>
@@ -164,7 +123,7 @@
        <item row="4" column="1">
         <widget class="QLabel" name="outVendorId">
          <property name="text">
-          <string>TextLabel</string>
+          <string>N/A</string>
          </property>
         </widget>
        </item>
@@ -225,6 +184,9 @@
    <property name="text">
     <string>About</string>
    </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
   </action>
   <action name="actionAboutQt">
    <property name="text">
@@ -238,6 +200,9 @@
    </property>
    <property name="text">
     <string>Sync</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
    </property>
   </action>
  </widget>

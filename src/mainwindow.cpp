@@ -24,8 +24,6 @@
  *
  */
 
-
-
 #include "mainwindow.h"
 #include <QVariant>
 #include "./ui_mainwindow.h"
@@ -45,7 +43,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(ui->actionSync, &QAction::triggered, this, &MainWindow::updateTreeView);
 
-    connect(ui->treeConnections, QTreeWidget::currentItemChanged, this,
+    connect(ui->treeConnections, &QTreeWidget::currentItemChanged, this,
             &MainWindow::updateDetailView);
 
     // disable wait for close, automatic close after main window close
@@ -74,7 +72,6 @@ void MainWindow::updateTreeView() {
     ui->treeConnections->clear();
     listOfPorts.clear();
     listOfPorts = QSerialPortInfo::availablePorts();
-    qDebug() << listOfPorts.size();
 
     for (int i = 0; i < listOfPorts.size(); ++i) {
         QTreeWidgetItem* treeItem = new QTreeWidgetItem(ui->treeConnections);
@@ -83,6 +80,7 @@ void MainWindow::updateTreeView() {
         treeItem->setText(2, listOfPorts[i].description());
         treeItem->setData(0, Qt::UserRole, QVariant(i));  ///< store index of given connection
     }
+    ui->treeConnections->sortItems(0, Qt::AscendingOrder);
 }
 
 void MainWindow::updateDetailView(QTreeWidgetItem* current) {
@@ -96,8 +94,10 @@ void MainWindow::updateDetailView(QTreeWidgetItem* current) {
         ui->outSerialNumber->setText(port.serialNumber());
         ui->outSystemLocation->setText(port.systemLocation());
         ui->outManufacturer->setText(port.manufacturer());
-        ui->outVendorId->setText("0x" +
-                                 QString("%1").arg(port.vendorIdentifier(), 4, 16).toUpper());
+        if (port.hasVendorIdentifier() != 0) {
+            ui->outVendorId->setText("0x" +
+                                     QString("%1").arg(port.vendorIdentifier(), 4, 16).toUpper());
+        }
         ///< @todo (ni-m) Add padding 0
     }
 }
