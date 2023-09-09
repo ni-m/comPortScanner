@@ -1,0 +1,50 @@
+# @file documentation.yml
+# @authors Gschwind, Weber, Schoch, Niederberger
+# @copyright (c) 2022 LineGrip Corp Ltd.
+#
+# @brief This workflow builds our documentation every time we push to a 
+# feature branch and publishes the documentation to gh-page on release.
+
+name: Docs
+on: 
+  release:
+    types: [published]
+
+  push:
+    #uncomment if we switch to GitFlow
+    #branches-ignore:
+    #- main
+
+  workflow_dispatch:
+    inputs:
+      publishDoc:
+        description: 'Publish to gh-pages [yes/no]'     
+        required: true
+        default: 'no'
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install apt-get packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: doxygen graphviz
+          version: 1.0
+      
+      - name: Run doxygen
+        run: |
+          touch .nojekyll #disable page generator from GitHub
+          mkdir -p ./build/doxygen
+          mkdir -p ./ghPages
+          doxygen
+          cp -R ./build/doxygen ./ghPages/doxygen # Copy build documentation to release folder
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/feature/buildDoxygen'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ghPages # Source folder for gh-pages deploy
